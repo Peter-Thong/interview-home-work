@@ -3,7 +3,7 @@ import { GET_POSTS, SET_POSTS } from "./post.types";
 import axios from "axios";
 
 const INITIAL_STATE = {
-  posts: undefined,
+  posts: [],
 };
 
 const reducer = (state = INITIAL_STATE, action) => {

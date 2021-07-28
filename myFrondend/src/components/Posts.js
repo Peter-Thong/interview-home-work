@@ -1,17 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 
 import Post from "./Post";
 
 import { useSelector, useDispatch } from "react-redux";
 import { getPosts } from "../redux/Post/post.actions";
 
-import axios from "axios";
-
 const Posts = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getPosts());
-  }, []);
+  }, [dispatch]);
 
   const posts = useSelector((state) => state.posts.posts);
   console.log(posts);
