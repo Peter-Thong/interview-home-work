@@ -15,9 +15,10 @@ import Blog from "./components/Blog";
 const App = () => (
   <Router>
     <NavigationBar />
-    {/* //     <Route path="/" element={<Blogs />} />
-  //     <Route path="/:blogId" element={<Blog />} />
-  //   </Routes> */}
+    <Routes>
+      <Route path="/" element={<Blogs />} />
+      <Route path="/:blogId" element={<Blog />} />
+    </Routes>
     <GlobalStyle />
   </Router>
 );
