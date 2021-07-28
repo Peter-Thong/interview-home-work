@@ -1,13 +1,16 @@
-import { GET_POSTS } from "./post.types";
+import { GET_POSTS, SET_POSTS } from "./post.types";
 
 import axios from "axios";
 
-const INITIAL_STATE = [];
+const INITIAL_STATE = {
+  posts: undefined,
+};
 
 const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case GET_POSTS:
-
+    case SET_POSTS:
+      const { posts } = action;
+      return { ...state, posts };
     default:
       return state;
   }
