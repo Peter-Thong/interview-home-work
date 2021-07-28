@@ -1,10 +1,19 @@
 const express = require("express");
 const request = require("request");
 
+const cors = require("cors");
+
 const { response } = require("express");
 
 const app = express();
 const port = 5000;
+
+const corsOptions = {
+  origin: "http://localhost:3000",
+  optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
 
 app.get("/", (req, res) => {
   res.send("What's up world");
@@ -39,7 +48,7 @@ app.get("/posts", (req, res) => {
         return post;
       });
 
-      res.json(posts);
+      res.send(posts);
     });
 });
 

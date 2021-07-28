@@ -3,6 +3,6 @@ import axios from "axios";
 export const requestGetPost = () => {
   return axios.request({
     method: "get",
-    url: "https://jsonplaceholder.typicode.com/posts",
+    url: "http://localhost:5000/posts",
   });
 };
