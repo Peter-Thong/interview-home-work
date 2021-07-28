@@ -9,15 +9,15 @@ import { GlobalStyle } from "./GlobalStyle";
 
 //Component
 import NavigationBar from "./components/NavigationBar";
-import Blogs from "./components/Blogs";
-import Blog from "./components/Blog";
+import Posts from "./components/Posts";
+import Post from "./components/Post";
 
 const App = () => (
   <Router>
     <NavigationBar />
     <Routes>
-      <Route path="/" element={<Blogs />} />
-      <Route path="/:blogId" element={<Blog />} />
+      <Route path="/" element={<Posts />} />
+      <Route path="/:postId" element={<Post />} />
     </Routes>
     <GlobalStyle />
   </Router>
