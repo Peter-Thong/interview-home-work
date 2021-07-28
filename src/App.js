@@ -1,16 +1,23 @@
-import "./App.css";
+import React from "react";
 
-import { Button, Container } from "react-bootstrap";
+//Router
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <Container>
-        <header className="App-header">Blog project</header>
-        <Button>Hello</Button>
-      </Container>
-    </div>
-  );
-}
+//Styles
+
+//Component
+import NavigationBar from "./components/NavigationBar";
+import Blogs from "./components/Blogs";
+import Blog from "./components/Blog";
+
+const App = () => (
+  <Router>
+    <NavigationBar />
+    <Routes>
+      <Route path="/" element={<Blogs />} />
+      <Route path="/:blogId" element={<Blog />} />
+    </Routes>
+  </Router>
+);
 
 export default App;
