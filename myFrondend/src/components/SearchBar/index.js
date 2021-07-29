@@ -10,10 +10,13 @@ const SearchBar = ({ setTerm }) => {
   const initial = useRef(true);
 
   useEffect(() => {
+    //prevent action in the first render
     if (initial.current) {
       initial.current = false;
       return;
     }
+
+    //set timer, after user finish typing  .5s then take action
     const timer = setTimeout(() => {
       setTerm(state);
     }, 500);

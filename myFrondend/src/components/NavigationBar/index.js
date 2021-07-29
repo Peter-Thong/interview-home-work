@@ -13,20 +13,18 @@ const NavigationBar = () => (
   <Wrapper>
     <Nav justify variant="tabs" defaultActiveKey="/">
       <Nav.Item>
-        <Link to="/">
-          <Nav.Link eventKey="disabled" disabled>
-            <img src={Logo} alt="logo" />
-          </Nav.Link>
+        <Link to="/" className="nav-link">
+          {/* <Nav.Link eventKey="disabled" disabled> */}
+          <img src={Logo} alt="logo" />
+          {/* </Nav.Link> */}
         </Link>
       </Nav.Item>
       <Nav.Item>
-        <Link to="/">
-          <Nav.Link href="/">Blogs</Nav.Link>
-        </Link>
+        <Nav.Link href="/">Blogs</Nav.Link>
       </Nav.Item>
       <Nav.Item>
         <Nav.Link eventKey="disabled" disabled>
-          <div class="circular--landscape">
+          <div className="circular--landscape">
             <img src={UserPhoto} alt="user-photo" />
           </div>
           <p>Young Buffalo</p>

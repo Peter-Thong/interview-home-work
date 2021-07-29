@@ -6,12 +6,12 @@ import UserPhoto from "../../images/user-img-2.jpg";
 
 const Comment = ({ author, body }) => (
   <Wrapper>
-    <p className="user">
+    <div className="user">
       <div className="circular--landscape">
         <img src={UserPhoto} alt="user-photo" />
       </div>
       <p>{author}</p>
-    </p>
+    </div>
     <p>{body}</p>
   </Wrapper>
 );

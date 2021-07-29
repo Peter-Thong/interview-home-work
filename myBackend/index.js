@@ -1,12 +1,12 @@
 const express = require("express");
-const request = require("request");
-
-const cors = require("cors");
 
 const { response } = require("express");
 
 const app = express();
 const port = 5000;
+
+// set up cors to allow access from local host
+const cors = require("cors");
 
 const corsOptions = {
   origin: "http://localhost:3000",
@@ -36,6 +36,9 @@ app.get("/posts", (req, res) => {
     })
     .then((body) => {
       commentsData = JSON.parse(body);
+
+      // add the author name to comment data
+      // the email from comment dont match user so append the random name from user db
       commentsData = commentsData.map((comment) => {
         comment.author =
           usersData[Math.floor(Math.random() * usersData.length)].name;
@@ -43,6 +46,7 @@ app.get("/posts", (req, res) => {
         return comment;
       });
 
+      // add author name, created date, comments to post data before send to front end
       const posts = postsData.map((post) => {
         let author = usersData.filter((user) => user.id == post.userId);
         post.authorName = author[0].name;
@@ -52,7 +56,6 @@ app.get("/posts", (req, res) => {
           (comment) => comment.postId == post.id
         );
 
-        console.log(commentsData[0].author);
         return post;
       });
 

@@ -21,7 +21,7 @@ export const Wrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: left;
-
+    margin-bottom: 1rem;
     p {
       margin-left: 1rem;
       margin-bottom: -5px;

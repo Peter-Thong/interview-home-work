@@ -21,26 +21,11 @@ export const GlobalStyle = createGlobalStyle`
     body{
         margin: 0;
         padding: 5rem;
-
-
         background-color: var(--bgColor);
 
         color: var(--white)
 
-        /* h1{
-            font-size: 2rem;
-            font-weight: 600;
-            color: var(--white);
-        }
-        h3{
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-        p{
-            font-size: 1rem;
-            color: var(--white);
-        } */
-        a{
+        a {
             text-decoration: none;
         }
     }
