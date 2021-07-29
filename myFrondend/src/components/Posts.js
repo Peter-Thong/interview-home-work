@@ -4,9 +4,12 @@ import Post from "./Post";
 
 import Spinner from "./Spinner";
 
+import SearchBar from "./SearchBar";
+
 import { useSelector, useDispatch } from "react-redux";
 import { getPosts } from "../redux/Post/post.actions";
 import { increment } from "../redux/Page/page.action";
+import { setSearchTerm } from "../redux/SearchTerm/searchTerm.action";
 
 const Posts = () => {
   const dispatch = useDispatch();
@@ -19,6 +22,7 @@ const Posts = () => {
   const page = useSelector((state) => state.page.page);
   const loading = useSelector((state) => state.loading.loading);
   const error = useSelector((state) => state.error.error);
+  const searchTerm = useSelector((state) => state.searchTerm.searchTerm);
 
   const observer = useRef();
   const lastPostElementRef = useCallback((node) => {
@@ -32,11 +36,24 @@ const Posts = () => {
     if (node) observer.current.observe(node);
   }, []);
 
-  // setHasMore(page < posts.length);
-  const filteredPosts = posts.slice(0, page);
+  const setTerm = (searchTerm) => {
+    dispatch(setSearchTerm(searchTerm));
+  };
 
+  // setHasMore(page < posts.length);
+  let filteredPosts;
+
+  if (searchTerm !== "") {
+    filteredPosts = posts.filter(
+      (post) => post.title.indexOf(searchTerm) !== -1
+    );
+    console.log(filteredPosts);
+  } else {
+    filteredPosts = posts.slice(0, page);
+  }
   return (
     <div>
+      <SearchBar setTerm={setTerm} />
       {filteredPosts.map((post, index) => {
         if (page == index + 1) {
           return (

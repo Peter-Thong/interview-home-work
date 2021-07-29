@@ -1,6 +1,4 @@
-import { GET_POSTS, SET_POSTS } from "./post.types";
-
-import axios from "axios";
+import { SET_POSTS } from "./post.types";
 
 const INITIAL_STATE = {
   posts: [],
