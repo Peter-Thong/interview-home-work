@@ -4,9 +4,9 @@ export const GlobalStyle = createGlobalStyle`
     :root{
         --maxWidth: 1280px;
         --white: #fff;
-        --lightGrey: #eee;
-        --medGrey: #353535;
-        --darkGrey: #1c1c1c;
+        --bgColor: #2A215A;
+        --medColor: #140D36;
+        --darkColor: #140D36;
         --fontSuperBig: 2.5rem;
         --fontBig:1.5rem;
         --fontMed: 1.2rem;
@@ -15,12 +15,17 @@ export const GlobalStyle = createGlobalStyle`
 
     *{
         box-sizing: border-box;
-        font-family: 'Abel', sans-serif;
+        font-family: 'Merriweather', serif;
     }
 
     body{
         margin: 0;
-        padding: 0;
+        padding: 5rem;
+
+
+        background-color: var(--bgColor);
+
+        color: var(--white)
 
         /* h1{
             font-size: 2rem;

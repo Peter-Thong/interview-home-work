@@ -9,6 +9,8 @@ import { Link } from "react-router-dom";
 
 import { useAccordionButton } from "react-bootstrap/AccordionButton";
 
+import CardImg from "../../images/user-img.jpg";
+
 const Thumb = React.forwardRef(({ post }, ref) => {
   //trim body for homepage
   const maxLength = 100;
@@ -26,11 +28,7 @@ const Thumb = React.forwardRef(({ post }, ref) => {
     );
 
     return (
-      <button
-        type="button"
-        style={{ backgroundColor: "pink" }}
-        onClick={decoratedOnClick}
-      >
+      <button type="button" onClick={decoratedOnClick}>
         {children}
       </button>
     );
@@ -39,18 +37,25 @@ const Thumb = React.forwardRef(({ post }, ref) => {
   return (
     <Wrapper ref={ref}>
       <Card>
+        <Card.Header>
+          <Link to={`/${post.id}`}>
+            <img src={CardImg} alt="post-img" />
+          </Link>
+        </Card.Header>
         <Card.Body>
+          <Card.Text>{post.authorName}</Card.Text>
+          <Card.Text>{post.createdDate}</Card.Text>
           <Link to={`/${post.id}`}>
             <Card.Title>{post.title}</Card.Title>
           </Link>
-          <Card.Text>Author: {post.authorName}</Card.Text>
-          <Card.Text>Created at: {post.createdDate}</Card.Text>
           <Card.Text>{trimmedBody}</Card.Text>
 
           <Accordion defaultActiveKey="1">
             <Card>
               <Card.Header>
-                <CustomToggle eventKey="0">Click me!</CustomToggle>
+                <CustomToggle eventKey="0">
+                  {post.comments.length} replies
+                </CustomToggle>
               </Card.Header>
               {post.comments.map((comment) => (
                 <Accordion.Collapse key={comment.id} eventKey="0">
