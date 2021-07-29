@@ -2,9 +2,9 @@ import React from "react";
 
 import { Wrapper } from "./Comment.styles";
 
-const Comment = ({ name, body }) => (
+const Comment = ({ author, body }) => (
   <Wrapper>
-    <h3>{name}</h3>
+    <h3>{author}</h3>
     <p>{body}</p>
   </Wrapper>
 );

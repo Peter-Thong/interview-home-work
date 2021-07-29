@@ -1,10 +1,18 @@
 import { combineReducers } from "redux";
+import { persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
 import postReducer from "./Post/post.reducer";
 import pageReducer from "./Page/page.reducer";
 import loadingReducer from "./Loading/loading.reducer";
 import errorReducer from "./Error/error.reducer";
 import searchTermReducer from "./SearchTerm/searchTerm.reducer";
+
+const persistConfig = {
+  key: "root",
+  storage,
+  whitelist: ["cart"],
+};
 
 const rootReducer = combineReducers({
   posts: postReducer,
@@ -14,4 +22,4 @@ const rootReducer = combineReducers({
   searchTerm: searchTermReducer,
 });
 
-export default rootReducer;
+export default persistReducer(persistConfig, rootReducer);

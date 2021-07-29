@@ -36,6 +36,12 @@ app.get("/posts", (req, res) => {
     })
     .then((body) => {
       commentsData = JSON.parse(body);
+      commentsData = commentsData.map((comment) => {
+        comment.author =
+          usersData[Math.floor(Math.random() * usersData.length)].name;
+
+        return comment;
+      });
 
       const posts = postsData.map((post) => {
         let author = usersData.filter((user) => user.id == post.userId);
@@ -45,6 +51,8 @@ app.get("/posts", (req, res) => {
         post.comments = commentsData.filter(
           (comment) => comment.postId == post.id
         );
+
+        console.log(commentsData[0].author);
         return post;
       });
 

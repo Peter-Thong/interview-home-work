@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 
-import Post from "./Post";
+import Thumb from "./Thumb";
 
 import Spinner from "./Spinner";
 
@@ -57,10 +57,10 @@ const Posts = () => {
       {filteredPosts.map((post, index) => {
         if (page == index + 1) {
           return (
-            <Post ref={lastPostElementRef} key={post.id} post={post}></Post>
+            <Thumb ref={lastPostElementRef} key={post.id} post={post}></Thumb>
           );
         } else {
-          return <Post key={post.id} post={post}></Post>;
+          return <Thumb key={post.id} post={post}></Thumb>;
         }
       })}
 

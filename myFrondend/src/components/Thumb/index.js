@@ -1,13 +1,16 @@
 import React from "react";
-import { Wrapper } from "./Post.styles";
+import { Wrapper } from "./Thumb.styles";
 
-import { Accordion, Card, Button } from "react-bootstrap";
+import { Accordion, Card } from "react-bootstrap";
 
 import Comment from "../Comment";
 
+import { Link } from "react-router-dom";
+
 import { useAccordionButton } from "react-bootstrap/AccordionButton";
 
-const Post = React.forwardRef(({ post }, ref) => {
+const Thumb = React.forwardRef(({ post }, ref) => {
+  //trim body for homepage
   const maxLength = 100;
 
   let trimmedBody = post.body.substr(0, maxLength);
@@ -16,6 +19,7 @@ const Post = React.forwardRef(({ post }, ref) => {
     Math.min(trimmedBody.length, trimmedBody.lastIndexOf(" "))
   );
 
+  //created to support Accordion
   function CustomToggle({ children, eventKey }) {
     const decoratedOnClick = useAccordionButton(eventKey, () =>
       console.log("totally custom!")
@@ -36,7 +40,9 @@ const Post = React.forwardRef(({ post }, ref) => {
     <Wrapper ref={ref}>
       <Card>
         <Card.Body>
-          <Card.Title>{post.title}</Card.Title>
+          <Link to={`/${post.id}`}>
+            <Card.Title>{post.title}</Card.Title>
+          </Link>
           <Card.Text>Author: {post.authorName}</Card.Text>
           <Card.Text>Created at: {post.createdDate}</Card.Text>
           <Card.Text>{trimmedBody}</Card.Text>
@@ -48,7 +54,7 @@ const Post = React.forwardRef(({ post }, ref) => {
               </Card.Header>
               {post.comments.map((comment) => (
                 <Accordion.Collapse key={comment.id} eventKey="0">
-                  <Comment name={comment.name} body={comment.body} />
+                  <Comment author={comment.author} body={comment.body} />
                 </Accordion.Collapse>
               ))}
             </Card>
@@ -59,4 +65,4 @@ const Post = React.forwardRef(({ post }, ref) => {
   );
 });
 
-export default Post;
+export default Thumb;
